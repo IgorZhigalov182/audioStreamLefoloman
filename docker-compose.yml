@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+
+  backend:
+    container_name: audio_backend
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - "8081:8081"
+      - "5005:5005"
+    networks:
+      - app_network
+    depends_on:
+      - db
+
+  db:
+    image: postgres:12.0-alpine
+    container_name: audio_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: "audio"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "password"
+    networks:
+      - app_network
+
+
+networks:
+  app_network:
+    driver: bridge
+volumes:
+  postgres_data:
