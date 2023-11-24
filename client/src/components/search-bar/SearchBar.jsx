@@ -10,7 +10,7 @@ const SearchBar = () => {
         display: 'flex',
         justifyContent: 'center',
       }}>
-      <i class="fa-solid fa-podcast" style={{ fontSize: '2.5rem', marginTop: '5px' }}></i>
+      <i className="fa-solid fa-podcast" style={{ fontSize: '2.5rem', marginTop: '5px' }}></i>
       <TextField
         style={{ width: '82%', marginLeft: '15px' }}
         id="outlined-basic"
