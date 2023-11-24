@@ -4,8 +4,9 @@ import Main from './pages/main/Main';
 import Rooms from './pages/rooms/Rooms';
 import Room from './pages/room/Room';
 import NotFound from './pages/not-found/NotFound';
+import Auth from './pages/autorization/Auth';
 
-const routes = (isLoggedIn = true) => [
+const routes = (isLoggedIn) => [
   { path: '/', element: isLoggedIn ? <Main /> : <Navigate to="/login" /> },
   {
     path: 'rooms',
@@ -13,7 +14,7 @@ const routes = (isLoggedIn = true) => [
     children: [{ path: ':roomId', element: <Room /> }],
   },
   { path: '*', element: <NotFound /> },
-  //   { path: 'login', element: <Auth /> },
+  { path: 'login', element: !isLoggedIn ? <Auth /> : <Navigate to='/' /> },
 ];
 
 export default routes;

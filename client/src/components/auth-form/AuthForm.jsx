@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login as loginAction } from '../../store/users.slice';
 import { Button, TextField } from '@mui/material';
 import styles from './AuthForm.module.scss';
 
@@ -6,9 +8,11 @@ const AuthForm = () => {
     const [hasLogin, setHasLogin] = useState(true);
     const [pass, setPass] = useState('');
     const [login, setLogin] = useState('');
+    const dispatch = useDispatch();
 
     const onSubmit = (e) => {
         e.preventDefault();
+        dispatch(loginAction({login, pass}));
     };
 
     return (
