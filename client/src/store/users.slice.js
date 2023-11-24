@@ -106,16 +106,16 @@ const userUpdateFailed = createAction('user/userUpdateFailed');
 //     }
 //   };
 
-// export const signUp = (payload) => async (dispatch) => {
-//   dispatch(authRequested());
-//   try {
-//     const data = await authService.register(payload);
-//     localStorageService.setTokens(data);
-//     dispatch(authRequestSuccess({ userId: data.userId }));
-//   } catch (error) {
-//     dispatch(authRequestFailed(error.message));
-//   }
-// };
+export const signUp = (payload) => async (dispatch) => {
+  dispatch(authRequested());
+  try {
+    const data = await authService.register(payload);
+    localStorageService.setTokens(data);
+    dispatch(authRequestSuccess({ userId: data.userId }));
+  } catch (error) {
+    dispatch(authRequestFailed(error.message));
+  }
+};
 
 // export const logOut = () => (dispatch) => {
 //   localStorageService.removeAuthData();
