@@ -1,6 +1,6 @@
-cd audio-stream-client
-yarn
-yarn dev
+# cd audio-stream-client
+# yarn
+# yarn dev
 
 # React + Vite
 
