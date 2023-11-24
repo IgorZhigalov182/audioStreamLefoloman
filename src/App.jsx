@@ -1,10 +1,11 @@
 import '../src/styles/reset.css';
 import '../src/styles/App.css';
+import Main from './pages/main/Main';
 
 function App() {
   return (
     <>
-      <h1>LEFOLOMAN - TOP</h1>
+      <Main />
     </>
   );
 }
