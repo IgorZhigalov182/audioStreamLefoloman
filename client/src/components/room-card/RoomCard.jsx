@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './RoomCard.module.scss';
-import MusicCard from './MusicCard';
+import MusicCard from '../music-card/MusicCard';
 import { useNavigate } from 'react-router-dom';
 
 const mockRooms = [

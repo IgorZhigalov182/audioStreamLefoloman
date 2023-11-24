@@ -3,7 +3,7 @@ import '../src/styles/App.css';
 import Main from './pages/main/Main';
 import { useRoutes } from 'react-router-dom';
 import routes from './routes';
-import withRouter from './withRouter';
+import withRouter from './hoc/withRouter';
 
 function App() {
   const elements = useRoutes(routes());

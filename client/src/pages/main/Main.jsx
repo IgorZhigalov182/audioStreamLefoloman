@@ -1,5 +1,5 @@
-import RoomCard from '../../RoomCard';
-import SearchBar from '../../SearchBar';
+import RoomCard from '../../components/room-card/RoomCard';
+import SearchBar from '../../components/search-bar/SearchBar';
 import styles from './Main.module.scss';
 
 const Main = () => {
