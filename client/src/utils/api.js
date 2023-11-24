@@ -33,7 +33,7 @@ export const register = (login, pass) => request(`/auth/register`, {
     })
 })
 
-export const login = (login, pass) => (`/auth/login`, {
+export const login = (login, pass) => request(`/auth/login`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json;charset=utf-8',
