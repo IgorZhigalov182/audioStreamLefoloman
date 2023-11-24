@@ -106,16 +106,16 @@ const userUpdateFailed = createAction('user/userUpdateFailed');
 //     }
 //   };
 
-export const signUp = (payload) => async (dispatch) => {
-  dispatch(authRequested());
-  try {
-    const data = await authService.register(payload);
-    localStorageService.setTokens(data);
-    dispatch(authRequestSuccess({ userId: data.userId }));
-  } catch (error) {
-    dispatch(authRequestFailed(error.message));
-  }
-};
+// export const signUp = (payload) => async (dispatch) => {
+//   dispatch(authRequested());
+//   try {
+//     const data = await authService.register(payload);
+//     localStorageService.setTokens(data);
+//     dispatch(authRequestSuccess({ userId: data.userId }));
+//   } catch (error) {
+//     dispatch(authRequestFailed(error.message));
+//   }
+// };
 
 // export const logOut = () => (dispatch) => {
 //   localStorageService.removeAuthData();
@@ -161,7 +161,6 @@ export const signUp = (payload) => async (dispatch) => {
 //   }
 // };
 // export const getUser = () => (state) => state.users.entities;
-
 // export const getIsLoggedIn = () => (state) => state.users.isLoggedIn;
 // export const getDataStatus = () => (state) => state.users.dataLoaded;
 // export const getUsersLoadingStatus = () => (state) => state.users.isLoading;
