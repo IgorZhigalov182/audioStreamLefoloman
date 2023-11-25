@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import QRCode from "react-qr-code";
+import QRCode from 'react-qr-code';
 import { Tab, Tabs } from '@mui/material';
 import styles from './Room.module.scss';
 
@@ -9,7 +9,7 @@ const Room = () => {
   let location = useLocation();
   const navigate = useNavigate();
   const roomID = location.pathname.split('/')[2];
-  const socket = useRef();
+  // const socket = useRef();
 
   const URL = 'localhost:8189';
   const socket = new WebSocket(`ws://${URL}`);
@@ -48,13 +48,14 @@ const Room = () => {
             </Tabs>
           </div>
           <div className={styles.video_container}>
-            <video className={styles.video} autoPlay={true}
-                   loop 
-                   src="/src/assets/fallback-white.mp4">
-            </video>
+            <video
+              className={styles.video}
+              autoPlay={true}
+              loop
+              src="/src/assets/fallback-white.mp4"></video>
           </div>
           <div className={styles.column}>
-            <QRCode fgColor='#9B2DC8' style={{ height: '80' }} value={`${window.location.href}`}/>
+            <QRCode fgColor="#9B2DC8" style={{ height: '80' }} value={`${window.location.href}`} />
             <span>Приглашай друзей!</span>
           </div>
         </div>
