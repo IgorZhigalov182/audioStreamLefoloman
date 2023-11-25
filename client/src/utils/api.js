@@ -47,7 +47,7 @@ export const login = (login, pass) =>
   });
 
 export const getRooms = () => {
-  request(`rooms`, {
+  request(`/rooms`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
