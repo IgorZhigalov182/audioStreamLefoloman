@@ -29,9 +29,25 @@
     }
 
     .rooms_wrapper {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
         width: 100%;
         margin-top: 2rem;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-gap: 10px;
     }
+}
+
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
 }

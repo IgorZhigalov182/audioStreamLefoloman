@@ -1,36 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import styles from './SearchBar.module.scss';
 
 const SearchBar = () => {
+  const [value, setValue] = useState('');
+
+  const handleSearchRoom = () => {
+    if (!value) return;
+
+    console.log(value);
+  };
+
   return (
-    <div
-      style={{
-        paddingTop: '1.5rem',
-        display: 'flex',
-        justifyContent: 'center',
-      }}>
-      <i className="fa-solid fa-podcast" style={{ fontSize: '2.5rem', marginTop: '5px' }}></i>
+    <div className={styles.search_wrapper}>
+      <img className={styles.logo} src="../../public/mts_logo.png" />
       <TextField
-        style={{ width: '82%', marginLeft: '15px' }}
+        style={{ width: '82%', marginLeft: '15px', height: '100%' }}
         id="outlined-basic"
         label="Что вы хотите послушать?"
         variant="outlined"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       />
-      <Button style={{ marginLeft: '15px' }} color="success" variant="outlined" size="medium">
+      <Button
+        onClick={(e) => handleSearchRoom(e)}
+        style={{ marginLeft: '15px', height: '100%' }}
+        color="error"
+        variant="outlined"
+        size="medium">
         Найти
       </Button>
-      {/* <button
-        style={{
-          textAlign: 'center',
-          border: '1px solid black',
-          marginLeft: '15px',
-          width: '5rem',
-          padding: '1rem',
-          borderRadius: '0.25rem',
-        }}>
-        Найти
-      </button> */}
     </div>
   );
 };
