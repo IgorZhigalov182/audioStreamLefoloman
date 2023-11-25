@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import styles from './Preference.module.scss';
@@ -11,6 +11,7 @@ import Chip from '@material-ui/core/Chip';
 import { useNavigate } from 'react-router-dom';
 import { setMusicPreference } from '../../services/localStorage.services';
 import { useDispatch } from 'react-redux';
+import { loadRoomsList } from '../../store/rooms.slice';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -120,9 +121,13 @@ export default function Preference() {
 
   const handleSubmitMusicPref = () => {
     setMusicPreference(personName);
-    dispatch();
+    // dispatch();
     navigate('/');
   };
+
+  useEffect(() => {
+    dispatch(loadRoomsList());
+  }, []);
 
   return (
     <div className={styles.container}>
