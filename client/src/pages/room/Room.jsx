@@ -9,26 +9,54 @@ const Room = () => {
   let location = useLocation();
   const navigate = useNavigate();
   const roomID = location.pathname.split('/')[2];
-  // const socket = useRef();
+  const socket = useRef();
 
   const URL = 'localhost:8189';
-  const socket = new WebSocket(`ws://${URL}`);
-  console.log(socket);
+  // const socket = new WebSocket(`ws://${URL}`);
+  // console.log(socket);
 
-  socket.onopen = () => {
-    console.log('open');
-    socket.send('Hello server');
+  // socket.onopen = () => {
+  //   console.log('open');
+  //   socket.send('Hello server');
+  // };
+
+  const connect = () => {
+    socket.current = new WebSocket('ws://localhost:8189');
+    // Слушатель, который отработает в момент подключения
+    socket.current.onopen = () => {
+      console.log('Подключение установлено');
+      const message = {
+        event: 'connection',
+        // username,
+        // id: Date.now(),
+      };
+
+      // Отправляем сообщение на сервер
+      socket.current.send(JSON.stringify(message));
+      // setIsConnected(true);
+    };
+    // Слушатель, который отработает, когда мы получим какое-либо сообщение
+    socket.current.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      setMessages((prev) => [message, ...prev]);
+    };
+    // Слушатель, который отработает, когда подключение закрылось
+    socket.current.onclose = (e) => {
+      console.log(e);
+      console.log('Socket закрыт');
+    };
+    // Слушатель, который отработает, когда случалась ошибка
+    socket.current.onerror = () => {
+      console.log('Socket произошла ошибка');
+    };
+
+    // return () => {
+    //   console.log('Onclose');
+    // };
   };
 
   useEffect(() => {
-    // socket.current = new WebSocket(`ws://${URL}`);
-    // socket.current.onopen = () => {
-    //   console.log('Open');
-    // };
-
-    return () => {
-      console.log('Onclose');
-    };
+    connect();
   }, []);
 
   return (
