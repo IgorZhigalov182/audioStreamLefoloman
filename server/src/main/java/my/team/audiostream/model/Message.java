@@ -18,8 +18,9 @@ public class Message {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "client_id")
-    private int clientId;
+    @ManyToOne
+    @JoinColumn(name = "client_id", foreignKey = @ForeignKey(name = "CLIENT_ID_FK"))
+    private Client client;
 
     @Column(name = "room_id")
     private int roomId;
