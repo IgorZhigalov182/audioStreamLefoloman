@@ -14,4 +14,7 @@ public class Tag {
 
     private String name;
 
+    @Column(name = "image_path")
+    private String imagePath;
+
 }
