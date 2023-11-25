@@ -12,28 +12,56 @@ const Room = () => {
   let location = useLocation();
   const navigate = useNavigate();
   const roomID = location.pathname.split('/')[2];
-
   const socket = useRef();
 
   const URL = 'localhost:8189';
+  // const socket = new WebSocket(`ws://${URL}`);
+  // console.log(socket);
 
-  useEffect(() => {
-    console.log(location);
-    socket.current = new WebSocket(`ws://${URL}/one?two=three`);
-    // if (socket) {
+  // socket.onopen = () => {
+  //   console.log('open');
+  //   socket.send('Hello server');
+  // };
 
+  const connect = () => {
+    socket.current = new WebSocket('ws://localhost:8189');
+    // Слушатель, который отработает в момент подключения
     socket.current.onopen = () => {
-      console.log('Open');
+      console.log('Подключение установлено');
+      const message = {
+        event: 'connection',
+        // username,
+        // id: Date.now(),
+      };
+
+      // Отправляем сообщение на сервер
+      socket.current.send(JSON.stringify(message));
+      // setIsConnected(true);
+    };
+    // Слушатель, который отработает, когда мы получим какое-либо сообщение
+    socket.current.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      setMessages((prev) => [message, ...prev]);
+    };
+    // Слушатель, который отработает, когда подключение закрылось
+    socket.current.onclose = (e) => {
+      console.log(e);
+      console.log('Socket закрыт');
+    };
+    // Слушатель, который отработает, когда случалась ошибка
+    socket.current.onerror = () => {
+      console.log('Socket произошла ошибка');
     };
 
-    // socket.current.send(JSON.stringify({ roomId: roomID }));
+    // return () => {
+    //   console.log('Onclose');
+    // };
+  };
 
-    return () =>
-      (socket.current.onclose = () => {
-        console.log('Close');
-      });
+  useEffect(() => {
+    connect();
   }, []);
-  
+
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
@@ -74,7 +102,7 @@ const Room = () => {
             </video>
           </div>
           <div className={styles.column}>
-            <QRCode fgColor='#9B2DC8' style={{ height: '80' }} value={`${window.location.href}`}/>
+            <QRCode fgColor="#9B2DC8" style={{ height: '80' }} value={`${window.location.href}`} />
             <span>Приглашай друзей!</span>
           </div>
         </div>
@@ -101,8 +129,8 @@ const Room = () => {
             </div>
           </div>
         </div>
+
       </div>
-      
     </section>
   );
 };

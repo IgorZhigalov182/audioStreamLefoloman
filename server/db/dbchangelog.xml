@@ -12,4 +12,6 @@
   <include file="scripts/005_ddl_create_tags_table.sql" relativeToChangelogFile="true"/>
   <include file="scripts/006_ddl_create_clients_tags_table.sql" relativeToChangelogFile="true"/>
   <include file="scripts/007_ddl_create_rooms_tags_table.sql" relativeToChangelogFile="true"/>
+  <include file="scripts/008_dml_insert_tags.sql" relativeToChangelogFile="true"/>
+  <include file="scripts/009_dml_insert_rooms.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
