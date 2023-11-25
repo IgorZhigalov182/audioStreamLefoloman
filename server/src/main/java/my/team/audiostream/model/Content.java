@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "tags")
-public class Tag {
+@Table(name = "content")
+public class Content {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +14,6 @@ public class Tag {
 
     private String name;
 
-    @Column(name = "image_path")
-    private String imagePath;
+    private String address;
 
 }

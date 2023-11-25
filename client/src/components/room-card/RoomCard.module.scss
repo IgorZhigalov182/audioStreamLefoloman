@@ -1,0 +1,53 @@
+.room_card {
+    width: 50vh;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 1rem;
+
+    .head_part {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        button {
+            border: 1px solid black;
+            border-radius: 0.25rem;
+            padding: 0.3rem;
+            transition: .4s;
+
+            &:hover {
+                background-color: black;
+                color: white
+            }
+        }
+    }
+
+    .rooms_wrapper {
+        display: grid;
+        width: 100%;
+        margin-top: 2rem;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-gap: 10px;
+    }
+}
+
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
+}

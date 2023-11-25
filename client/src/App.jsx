@@ -4,7 +4,7 @@ import Main from './pages/main/Main';
 import { useRoutes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import routes from './routes';
-import withRouter from './withRouter';
+import withRouter from './hoc/withRouter';
 import { getIsLoggedIn } from './store/users.slice';
 
 function App() {
