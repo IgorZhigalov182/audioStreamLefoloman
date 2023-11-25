@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import QRCode from "react-qr-code";
 import { Tab, Tabs } from '@mui/material';
@@ -9,28 +9,28 @@ const Room = () => {
   let location = useLocation();
   const navigate = useNavigate();
   const roomID = location.pathname.split('/')[2];
-
   const socket = useRef();
 
   const URL = 'localhost:8189';
+  const socket = new WebSocket(`ws://${URL}`);
+  console.log(socket);
+
+  socket.onopen = () => {
+    console.log('open');
+    socket.send('Hello server');
+  };
 
   useEffect(() => {
-    console.log(location);
-    socket.current = new WebSocket(`ws://${URL}/one?two=three`);
-    // if (socket) {
+    // socket.current = new WebSocket(`ws://${URL}`);
+    // socket.current.onopen = () => {
+    //   console.log('Open');
+    // };
 
-    socket.current.onopen = () => {
-      console.log('Open');
+    return () => {
+      console.log('Onclose');
     };
-
-    // socket.current.send(JSON.stringify({ roomId: roomID }));
-
-    return () =>
-      (socket.current.onclose = () => {
-        console.log('Close');
-      });
   }, []);
-  
+
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
@@ -58,10 +58,8 @@ const Room = () => {
             <span>Приглашай друзей!</span>
           </div>
         </div>
-        <div className={styles.wrapper}>
-        </div>
+        <div className={styles.wrapper}></div>
       </div>
-      
     </section>
   );
 };

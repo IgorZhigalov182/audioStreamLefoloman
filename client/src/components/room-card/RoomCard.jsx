@@ -18,6 +18,14 @@ const mockRooms = [
   { name: 'Vrums', id: '13654523', tags: ['3'], isPrivate: false, isPremium: true },
 ];
 
+const fiveMockRooms = [
+  { name: 'Radio', id: '123', tags: ['1', '2', '3'], isPrivate: false, isPremium: false },
+  { name: 'Podcast', id: '223', tags: ['2', '3'], isPrivate: false, isPremium: false },
+  { name: 'Show', id: '32243', tags: ['1', '3'], isPrivate: false, isPremium: false },
+  { name: 'News', id: '322323', tags: ['1'], isPrivate: false, isPremium: false },
+  { name: 'Music', id: '21323', tags: ['3'], isPrivate: false, isPremium: true },
+];
+
 const RoomCard = () => {
   const navigate = useNavigate();
   const handleGoToRooms = () => navigate(`/rooms`);
@@ -37,7 +45,7 @@ const RoomCard = () => {
           <button onClick={handleGoToRooms}>Смотреть все</button>
         </div>
         <div className={styles.rooms_wrapper}>
-          {mockRooms.map(({ name, id, tags, isPrivate, isPremium }) => (
+          {fiveMockRooms.map(({ name, id, tags, isPrivate, isPremium }) => (
             <MusicCard name={name} id={id} key={id} isPrivate={isPrivate} isPremium={isPremium} />
           ))}
         </div>
@@ -48,7 +56,7 @@ const RoomCard = () => {
   return (
     <section className={styles.room_card}>
       <div className={styles.head_part}>
-        <button onClick={() => navigate(-1)}>На главную</button>
+        <button onClick={() => navigate('/')}>На главную</button>
       </div>
       <div className={styles.rooms_wrapper}>
         {mockRooms.map(({ name, id, tags }) => (

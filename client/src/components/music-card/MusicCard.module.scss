@@ -3,13 +3,14 @@
 
     .card_wrapper {
         // width: 12vw;
-        height: 20vh;
+        height: 23vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         border-radius: 1.25rem;
         margin-bottom: 10px;
+        justify-content: center;
 
         &:hover {
             cursor: pointer;
@@ -18,10 +19,9 @@
         }
 
         .logo_card {
-            margin-top: 1rem;
-            width: 80px;
-            height: 100px;
-            background-color: green;
+            width: 70%;
+            height: 70%;
+            background-color: rgb(214, 37, 2);
             border-radius: 1rem;
         }
     }

@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    vertical-align: center;
+    line-height: 50vh;
+
+    .wrapper {
+        width: 50vh;
+        height: 100vh;
+        background-color: bisque;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        
+
+        .text_field {
+            width: 300px;
+            height: 50px;
+        }
+    }
+}
