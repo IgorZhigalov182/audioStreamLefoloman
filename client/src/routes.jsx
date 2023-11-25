@@ -19,6 +19,7 @@ const routes = (isLoggedIn) => [
     ],
   },
   { path: '*', element: <NotFound /> },
+  // { path: 'preference', element: isLoggedIn ? < /> : <Navigate to="/" /> },
   { path: 'login', element: !isLoggedIn ? <Auth /> : <Navigate to="/" /> },
 ];
 

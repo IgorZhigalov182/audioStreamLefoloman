@@ -1,7 +1,7 @@
+import React, { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import QRCode from "react-qr-code";
 import { Tab, Tabs } from '@mui/material';
-import React, { useState } from 'react';
 import styles from './Room.module.scss';
 
 const Room = () => {
@@ -10,6 +10,27 @@ const Room = () => {
   const navigate = useNavigate();
   const roomID = location.pathname.split('/')[2];
 
+  const socket = useRef();
+
+  const URL = 'localhost:8189';
+
+  useEffect(() => {
+    console.log(location);
+    socket.current = new WebSocket(`ws://${URL}/one?two=three`);
+    // if (socket) {
+
+    socket.current.onopen = () => {
+      console.log('Open');
+    };
+
+    // socket.current.send(JSON.stringify({ roomId: roomID }));
+
+    return () =>
+      (socket.current.onclose = () => {
+        console.log('Close');
+      });
+  }, []);
+  
   return (
     <section className={styles.container}>
       <div className={styles.wrapper}>
