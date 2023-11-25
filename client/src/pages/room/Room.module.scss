@@ -1,0 +1,48 @@
+@import '../../styles/variables.scss';
+
+.container {
+    background-color: $light-grey;
+    box-sizing: border-box;
+    height: calc(100vh - 20px);
+
+    .head_part {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        button {
+            border: 1px solid black;
+            border-radius: 0.25rem;
+            padding: 0.3rem;
+            transition: .4s;
+            padding-right: 10px;
+            padding-left: 10px;
+
+            &:hover {
+                background-color: black;
+                color: white
+            }
+        }
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .row {
+        display: grid;
+        column-gap: 10px;
+        grid-template-columns: 2fr 1fr;
+        height: 90%;
+    }
+}

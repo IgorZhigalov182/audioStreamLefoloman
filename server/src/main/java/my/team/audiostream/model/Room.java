@@ -33,4 +33,8 @@ public class Room {
     @JoinColumn(name = "room_id")
     private Set<Content> content;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "room_id")
+    private Set<Message> messages;
+
 }
