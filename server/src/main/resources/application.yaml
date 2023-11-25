@@ -1,0 +1,14 @@
+minio:
+  endpoint: http://localhost:9000
+  access_key: admin
+  secret_key: password
+  bucket: audio
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://${HOST_DB}:${PORT_DB}/audio
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
