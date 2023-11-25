@@ -9,6 +9,9 @@ services:
     ports:
       - "8081:8081"
       - "5005:5005"
+    environment:
+      HOST_DB: db
+      PORT_DB: 5432
     networks:
       - app_network
     depends_on:
