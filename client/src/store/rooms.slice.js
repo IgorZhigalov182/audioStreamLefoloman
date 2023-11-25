@@ -1,5 +1,6 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import { getRooms } from '../utils/api';
+import { getMusicPreference } from '../services/localStorage.services';
 
 const initialState = {
   entities: null,
@@ -44,6 +45,13 @@ export const loadRoomsList = () => async (dispatch, getState) => {
 };
 
 export const getRoomsList = () => (state) => state.rooms.entities;
+
+export const getFivePrefRoom = () => (state) => {
+  //   const musicPref = getMusicPreference();
+  //   const fivePrefRooms = [...state.rooms.entities].filter((e) => {
+  //     console.log(e);
+  //   });
+};
 
 // export const getCurrentUserData = () => (state) => {
 //   return state.users.entities

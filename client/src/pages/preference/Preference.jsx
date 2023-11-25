@@ -10,6 +10,7 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import { useNavigate } from 'react-router-dom';
 import { setMusicPreference } from '../../services/localStorage.services';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -99,6 +100,7 @@ export default function Preference() {
   const navigate = useNavigate();
   const classes = useStyles();
   const theme = useTheme();
+  const dispatch = useDispatch();
   const [personName, setPersonName] = React.useState([]);
 
   const handleChange = (event) => {
@@ -116,12 +118,9 @@ export default function Preference() {
     setPersonName(value);
   };
 
-  //
-
-  //
-
   const handleSubmitMusicPref = () => {
     setMusicPreference(personName);
+    dispatch();
     navigate('/');
   };
 
