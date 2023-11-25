@@ -55,12 +55,73 @@
 
     .video_container {
         height: 50%;
-        align-self: center;
+        width: 100%;
         overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
     }
 
     .video {
-        height: 110%;
+        height: 105%;
         transform: translateY(-10px);
+    }
+
+    .play_container {
+        position: absolute;
+        top: 50%;
+        left: 48%;
+        z-index: 10;
+    }
+
+    .play {    
+        height: 30px;
+        width: 30px;
+    }
+
+    .track {
+        display: flex;
+        flex-direction: column;
+        border: 3px solid $light-grey;
+        padding: 10px;
+    }
+
+    .track_row {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    .chat {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 10px;
+        overflow-y: auto;
+    }
+
+    .send {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+        overflow-x: hidden;
+    }
+
+    .message {
+        background-color: $purple;
+        padding: 5px;
+        border-radius: 10px;
+        color: white;
+        width: fit-content;
+        align-self: flex-end;
+    }
+
+    .rotate {
+        transform: rotate(90deg);
     }
 }
