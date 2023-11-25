@@ -1,14 +1,15 @@
-const URL = '';
+// const URL = '127.0.0.1:8081';
+const URL = 'localhost:8081';
 
 const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
+  if (res.status === 200) {
+    return res;
   }
   return Promise.reject(`Ошибка ${res.status}`);
 };
 
 const checkSuccess = (res) => {
-  if (res?.success) {
+  if (res.status === 200) {
     return res;
   }
 
@@ -16,31 +17,40 @@ const checkSuccess = (res) => {
 };
 
 const request = (endpoint, options) => {
-  return fetch(`${URL}${endpoint}`, options)
+  return fetch(`http://${URL}${endpoint}`, options)
     .then((res) => checkResponse(res))
     .then((res) => checkSuccess(res));
 };
 
 export const register = (login, pass) =>
-  request(`/auth/register`, {
+  request(`/registration`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json;charset=utf-8',
+      'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
       password: pass,
-      login: login,
-    }),
+      login: login
+    })
   });
 
 export const login = (login, pass) =>
-  request(`/auth/login`, {
+  request(`/login`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json;charset=utf-8',
+      'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
       login: login,
-      password: pass,
-    }),
+      password: pass
+    })
   });
+
+export const getRooms = () => {
+  request(`rooms`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    }
+  });
+};

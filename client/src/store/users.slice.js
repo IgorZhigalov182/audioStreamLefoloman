@@ -1,5 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
-import { register as registerApi, login as loginApi} from '../utils/api';
+import { register as registerApi, login as loginApi } from '../utils/api';
 
 const initialState = {
   entities: null,
@@ -7,7 +7,7 @@ const initialState = {
   error: null,
   auth: null,
   isLoggedIn: false,
-  dataLoaded: false,
+  dataLoaded: false
 };
 
 export const usersSlice = createSlice({
@@ -51,8 +51,8 @@ export const usersSlice = createSlice({
     },
     authRequested: (state) => {
       state.error = null;
-    },
-  },
+    }
+  }
 });
 
 const { reducer: usersReducer, actions } = usersSlice;
@@ -63,7 +63,7 @@ const {
   authRequestSuccess,
   authRequestFailed,
   userLoggedOut,
-  userUpdateSuccess,
+  userUpdateSuccess
 } = actions;
 
 const authRequested = createAction('users/authRequested');
@@ -71,11 +71,12 @@ const userUpdateRequested = createAction('user/userUpdateRequested');
 const userUpdateFailed = createAction('user/userUpdateFailed');
 
 export const login =
-  ({login, pass, redirect}) =>
+  ({ login, pass, redirect }) =>
   async (dispatch) => {
     //dispatch(authRequested());
-    loginApi(login, pass);
-    dispatch(authRequestSuccess({ userId: '123456'}));
+    const res = await loginApi(login, pass);
+    console.log(res.status);
+    dispatch(authRequestSuccess({ userId: '123456' }));
     // try {
     //   const data = await authService.login({ email, password });
     //   dispatch(authRequestSuccess({ userId: data.userId }));
@@ -91,16 +92,19 @@ export const login =
     // }
   };
 
-// export const signUp = (payload) => async (dispatch) => {
-//   dispatch(authRequested());
-//   try {
-//     const data = await authService.register(payload);
-//     localStorageService.setTokens(data);
-//     dispatch(authRequestSuccess({ userId: data.userId }));
-//   } catch (error) {
-//     dispatch(authRequestFailed(error.message));
-//   }
-// };
+export const signUp =
+  ({ login, pass }) =>
+  async (dispatch) => {
+    const res = await registerApi(login, pass);
+    console.log(res.status);
+    // try {
+    // const data = await authService.register(payload);
+    //   localStorageService.setTokens(data);
+    //   dispatch(authRequestSuccess({ userId: data.userId }));
+    // } catch (error) {
+    //   dispatch(authRequestFailed(error.message));
+    // }
+  };
 
 // export const logOut = () => (dispatch) => {
 //   localStorageService.removeAuthData();

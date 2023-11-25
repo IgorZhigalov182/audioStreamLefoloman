@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login as loginAction } from '../../store/users.slice';
+import { login as loginAction, signUp } from '../../store/users.slice';
 import { Button, TextField } from '@mui/material';
 import styles from './AuthForm.module.scss';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,12 @@ const AuthForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(loginAction({ login, pass }));
+    // navigate('/preference');
+  };
+
+  const onRegister = (e) => {
+    e.preventDefault();
+    dispatch(signUp({ login, pass }));
     // navigate('/preference');
   };
 
@@ -70,7 +76,7 @@ const AuthForm = () => {
               />
             </div>
             <div className={styles.form_section}>
-              <Button onClick={onSubmit} variant="contained">
+              <Button onClick={onRegister} variant="contained">
                 Зарегистрироваться
               </Button>
               <div>
