@@ -25,7 +25,7 @@ public class ClientController {
         if (clientOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Client with same login already exists.");
         }
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

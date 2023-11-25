@@ -1,4 +1,4 @@
-INSERT INTO tags VALUES
+INSERT INTO tags(name) VALUES
 ('alternative'),
 ('authors_song'),
 ('blues'),
