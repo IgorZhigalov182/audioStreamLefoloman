@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './RoomCard.module.scss';
 import MusicCard from '../music-card/MusicCard';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getFivePrefRoom } from '../../services/room.services';
+import { getFivePrefRoom, getRoomsList } from '../../store/rooms.slice';
+import { useSelector } from 'react-redux';
 
 const mockRooms = [
   { name: 'Radio', id: '123', tags: ['1', '2', '3'], isPrivate: false, isPremium: false },
@@ -15,7 +16,7 @@ const mockRooms = [
   { name: 'TV', id: '1354323', tags: ['3'], isPrivate: false, isPremium: true },
   { name: 'Drums', id: '1323', tags: ['3'], isPrivate: false, isPremium: true },
   { name: 'Brums', id: '453146323', tags: ['3'], isPrivate: false, isPremium: true },
-  { name: 'Vrums', id: '13654523', tags: ['3'], isPrivate: false, isPremium: true },
+  { name: 'Vrums', id: '13654523', tags: ['3'], isPrivate: false, isPremium: true }
 ];
 
 const fiveMockRooms = [
@@ -23,18 +24,23 @@ const fiveMockRooms = [
   { name: 'Podcast', id: '223', tags: ['2', '3'], isPrivate: false, isPremium: false },
   { name: 'Show', id: '32243', tags: ['1', '3'], isPrivate: false, isPremium: false },
   { name: 'News', id: '322323', tags: ['1'], isPrivate: false, isPremium: false },
-  { name: 'Music', id: '21323', tags: ['3'], isPrivate: false, isPremium: true },
+  { name: 'Music', id: '21323', tags: ['3'], isPrivate: false, isPremium: true }
 ];
 
 const RoomCard = () => {
+  const [allRooms, setAllRooms] = useState([]);
+  const [fiveRooms, setFiveRooms] = useState([]);
   const navigate = useNavigate();
   const handleGoToRooms = () => navigate(`/rooms`);
+  const fivePrefRoom = useSelector(getFivePrefRoom());
+  const listRooms = useSelector(getRoomsList());
   let location = useLocation();
 
-  // getUserPreference () => ['123', '223'] from LocalStorage
-
   useEffect(() => {
-    getFivePrefRoom();
+    setAllRooms(listRooms);
+    setFiveRooms(fivePrefRoom);
+    console.log(allRooms);
+    console.log(fiveRooms);
   }, []);
 
   if (location.pathname === '/') {
