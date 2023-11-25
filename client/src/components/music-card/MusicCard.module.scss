@@ -1,28 +1,32 @@
-.card_wrapper {
-    // width: 12vw;
-    height: 20vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 1.25rem;
+.wrapper {
+    text-align: center;
 
-    &:hover {
-        cursor: pointer;
-        transition: .4s;
-        opacity: 0.7;
+    .card_wrapper {
+        // width: 12vw;
+        height: 20vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 1.25rem;
+        margin-bottom: 10px;
+
+        &:hover {
+            cursor: pointer;
+            transition: .4s;
+            opacity: 0.7;
+        }
+
+        .logo_card {
+            margin-top: 1rem;
+            width: 80px;
+            height: 100px;
+            background-color: green;
+            border-radius: 1rem;
+        }
     }
-
-    .logo_card {
-        margin-top: 1rem;
-        width: 80px;
-        height: 100px;
-        background-color: green;
-        border-radius: 1rem;
-    }
-
-    h1 {
-        font-size: 1.25rem;
-        margin-top: 0.25rem;
+    .header_name {
+        font-size: 1.3rem;
+        // margin-top: 1.25rem;
     }
 }
