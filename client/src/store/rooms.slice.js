@@ -53,12 +53,6 @@ export const getFivePrefRoom = () => (state) => {
   //   });
 };
 
-// export const getCurrentUserData = () => (state) => {
-//   return state.users.entities
-//     ? state.users.entities.find((u) => u.id === state.users.auth.userId)
-//     : null;
-// };
-
 // export const loadUserById = (userId) => async (dispatch) => {
 //   dispatch(usersRequested());
 

@@ -8,7 +8,7 @@ import Auth from './pages/autorization/Auth';
 import RoomOutlet from './outlets/RoomOutlet';
 import Preference from './pages/preference/Preference';
 
-const routes = (isLoggedIn = true) => [
+const routes = (isLoggedIn) => [
   // { path: '/', element: isLoggedIn ? <Main /> : <Navigate to="/login" /> },
   { path: '/', element: isLoggedIn ? <Main /> : <Main /> },
   { path: '/preference', element: isLoggedIn ? <Preference /> : <Navigate to="/" /> },
