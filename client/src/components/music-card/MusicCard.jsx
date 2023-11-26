@@ -11,7 +11,8 @@ const MusicCard = ({ name, id, isPrivate, isPremium }) => {
       state: {
         isPrivate: isPrivate,
         isPremium: isPremium,
-      },
+        name: name
+      }
     });
   };
 

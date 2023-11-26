@@ -7,8 +7,7 @@ import routes from './routes';
 import withRouter from './hoc/withRouter';
 import { getIsLoggedIn } from './store/users.slice';
 function App() {
-  // const isLoggedIn = useSelector(getIsLoggedIn());
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector(getIsLoggedIn());
   const elements = useRoutes(routes(isLoggedIn));
 
   return <div className="container">{elements}</div>;

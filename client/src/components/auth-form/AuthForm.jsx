@@ -21,7 +21,7 @@ const AuthForm = () => {
   const onRegister = (e) => {
     e.preventDefault();
     dispatch(signUp({ login, pass }));
-    // navigate('/preference');
+    navigate('/preference');
   };
 
   return (
