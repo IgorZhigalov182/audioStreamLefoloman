@@ -36,12 +36,12 @@ export const loadRoomsList = () => async (dispatch, getState) => {
   dispatch(roomsRequested());
   const res = getRooms();
   console.log(res);
-  //   try {
-  //     // const { content } = await userService.get();
-  //     dispatch(roomsReceived(res));
-  //   } catch (error) {
-  //     dispatch(roomsRequestFailed(error.message));
-  //   }
+  try {
+    // const { content } = await userService.get();
+    dispatch(roomsReceived(res));
+  } catch (error) {
+    dispatch(roomsRequestFailed(error.message));
+  }
 };
 
 export const getRoomsList = () => (state) => state.rooms.entities;

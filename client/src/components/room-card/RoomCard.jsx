@@ -47,7 +47,7 @@ const RoomCard = () => {
     return (
       <section className={styles.room_card}>
         <div className={styles.head_part}>
-          <h2>Комнаты</h2>
+          <h2>Мы подобрали для вас</h2>
           <button onClick={handleGoToRooms}>Смотреть все</button>
         </div>
         <div className={styles.rooms_wrapper}>
